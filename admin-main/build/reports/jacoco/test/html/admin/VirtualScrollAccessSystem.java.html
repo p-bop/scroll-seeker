@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VirtualScrollAccessSystem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">admin-main</a> &gt; <a href="index.source.html" class="el_package">admin</a> &gt; <span class="el_source">VirtualScrollAccessSystem.java</span></div><h1>VirtualScrollAccessSystem.java</h1><pre class="source lang-java linenums">package admin;
+
+import java.util.*;
+import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+
+
+<span class="nc" id="L10">public class VirtualScrollAccessSystem {</span>
+
+
+    public static void main(String[] args) {
+<span class="nc" id="L14">        Scanner scanner = new Scanner(System.in);</span>
+
+
+        while (true) {
+<span class="nc" id="L18">            displayMainMenu();</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">            if (scanner.hasNextInt()) {</span>
+<span class="nc" id="L20">                int choice = scanner.nextInt();</span>
+<span class="nc" id="L21">                scanner.nextLine();</span>
+<span class="nc bnc" id="L22" title="All 4 branches missed.">                if (choice &gt;= 1 &amp;&amp; choice &lt;= 6) {</span>
+<span class="nc bnc" id="L23" title="All 7 branches missed.">                    switch (choice) {</span>
+                        case 1:
+<span class="nc" id="L25">                            System.out.println(&quot;\nYou are using the application as a guest. You can only view scrolls.\n&quot;);</span>
+<span class="nc" id="L26">                            ScrollSystem scrollSystem = new ScrollSystem();</span>
+<span class="nc" id="L27">                            scrollSystem.viewScrollsForGuest(scanner);</span>
+<span class="nc" id="L28">                            break;</span>
+                        case 2:
+<span class="nc" id="L30">                            registerUser(scanner);</span>
+<span class="nc" id="L31">                            break;</span>
+                        case 3:
+<span class="nc" id="L33">                            loginUser(scanner);</span>
+<span class="nc" id="L34">                            break;</span>
+                        case 4:
+<span class="nc" id="L36">                            Admin.main(new String[0]);</span>
+<span class="nc" id="L37">                            break;</span>
+                        case 5:
+<span class="nc" id="L39">                            forgotPassword(scanner);</span>
+<span class="nc" id="L40">                            break;</span>
+                        case 6:
+<span class="nc" id="L42">                            System.out.println(&quot;\nThank you for using the Virtual Scroll Access System. Goodbye!\n&quot;);</span>
+<span class="nc" id="L43">                            System.exit(0);</span>
+<span class="nc" id="L44">                            break;</span>
+                        default:
+<span class="nc" id="L46">                            System.out.println(&quot;\nInvalid choice. Please select a valid option.\n&quot;);</span>
+<span class="nc" id="L47">                            break;</span>
+                    }
+                }else{
+<span class="nc" id="L50">                    System.out.println(&quot;\nInvalid choice. Please select a valid option.\n&quot;);</span>
+                }
+<span class="nc" id="L52">            }else {</span>
+<span class="nc" id="L53">                System.out.println(&quot;\nOnly appropriate numbers are allowed. Please enter a valid option.\n&quot;);</span>
+<span class="nc" id="L54">                scanner.nextLine();</span>
+            }
+        }
+    }
+
+
+    public static void displayMainMenu() {
+<span class="fc" id="L61">        System.out.println(&quot;Welcome to the Virtual Scroll Access System!&quot;);</span>
+<span class="fc" id="L62">        System.out.println(&quot;1. Continue as guest&quot;);</span>
+<span class="fc" id="L63">        System.out.println(&quot;2. Register new user&quot;);</span>
+<span class="fc" id="L64">        System.out.println(&quot;3. Login&quot;);</span>
+<span class="fc" id="L65">        System.out.println(&quot;4. Admin login&quot;);</span>
+<span class="fc" id="L66">        System.out.println(&quot;5. Forgot Password&quot;);</span>
+<span class="fc" id="L67">        System.out.println(&quot;6. Exit&quot;);</span>
+<span class="fc" id="L68">        System.out.print(&quot;Please select an option: &quot;);</span>
+<span class="fc" id="L69">    }</span>
+
+
+    public static void registerUser(Scanner scanner) {
+<span class="fc" id="L73">        System.out.println(&quot;\nRegister a new user:&quot;);</span>
+
+        String idKey;
+        String username;
+        String phoneNumber;
+        String emailAddress;
+
+        while (true) {
+<span class="fc" id="L81">            System.out.print(&quot;Enter a unique ID key (integer): &quot;);</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">            if (scanner.hasNextInt()) {</span>
+<span class="fc" id="L83">                idKey = scanner.nextLine();</span>
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">                if (isIdKeyUnique(idKey)) {</span>
+<span class="fc" id="L85">                    break;</span>
+                } else {
+<span class="nc" id="L87">                    System.out.println(&quot;ID key is not unique. Please choose a different one.&quot;);</span>
+                }
+            } else {
+<span class="fc" id="L90">                System.out.println(&quot;ID key must be an integer. Please enter a valid integer.&quot;);</span>
+<span class="fc" id="L91">                scanner.nextLine();</span>
+            }
+        }
+
+        while (true) {
+<span class="fc" id="L96">            System.out.print(&quot;Enter a username (not more than 10 characters): &quot;);</span>
+<span class="fc" id="L97">            username = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">            if (username.length() &lt;= 10) {</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">                if (isUsernameUnique(username)) {</span>
+<span class="fc" id="L101">                    break;</span>
+                } else {
+<span class="fc" id="L103">                    System.out.println(&quot;Username is not unique. Please choose a different one.&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L106">                System.out.println(&quot;Username must be 10 characters or less. Please try again.&quot;);</span>
+            }
+        }
+
+        while (true) {
+<span class="fc" id="L111">            System.out.print(&quot;Enter a phone number (10 digits): &quot;);</span>
+<span class="fc" id="L112">            phoneNumber = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">            if (phoneNumber.matches(&quot;\\d{10}&quot;)) {</span>
+<span class="fc" id="L115">                break;</span>
+            } else {
+<span class="nc" id="L117">                System.out.println(&quot;Phone number must be exactly 10 digits long. Please try again.&quot;);</span>
+            }
+        }
+
+        while (true) {
+<span class="fc" id="L122">            System.out.print(&quot;Enter an email address (not more than 320 characters): &quot;);</span>
+<span class="fc" id="L123">            emailAddress = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L125" title="1 of 2 branches missed.">            if (emailAddress.length() &lt;= 320) {</span>
+<span class="fc" id="L126">                break;</span>
+            } else {
+<span class="nc" id="L128">                System.out.println(&quot;Email address must be 320 characters or less. Please try again.&quot;);</span>
+            }
+        }
+
+<span class="fc" id="L132">        System.out.print(&quot;Enter a password: &quot;);</span>
+<span class="fc" id="L133">        String password = scanner.nextLine();</span>
+<span class="fc" id="L134">        String hashedPassword = hashPassword(password);</span>
+
+        String fullName;
+        while (true) {
+<span class="fc" id="L138">            System.out.print(&quot;Enter your full name (Cannot include numbers): &quot;);</span>
+<span class="fc" id="L139">            fullName = scanner.nextLine();</span>
+<span class="fc bfc" id="L140" title="All 2 branches covered.">            if (!fullName.matches(&quot;.*\\d+.*&quot;)) {</span>
+<span class="fc" id="L141">                break;</span>
+            } else {
+<span class="fc" id="L143">                System.out.println(&quot;Full name cannot contain digits. Please try again.&quot;);</span>
+            }
+        }
+
+
+<span class="fc" id="L148">        saveUserDetails(idKey, username, hashedPassword, fullName, phoneNumber, emailAddress, &quot;user&quot;);</span>
+
+<span class="fc" id="L150">        System.out.println(&quot;\nUser registered successfully!\n&quot;);</span>
+<span class="fc" id="L151">    }</span>
+
+
+    public static boolean isIdKeyUnique(String idKey) {
+<span class="fc" id="L155">        try (Scanner scanner = new Scanner(new File(&quot;users.txt&quot;))) {</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">            while (scanner.hasNextLine()) {</span>
+<span class="fc" id="L157">                String line = scanner.nextLine();</span>
+<span class="fc" id="L158">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L159">                String existingIdKey = parts[0];</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">                if (existingIdKey.equals(idKey)) {</span>
+<span class="fc" id="L161">                    return false;</span>
+                }
+<span class="fc" id="L163">            }</span>
+<span class="pc" id="L164">        } catch (IOException e) {</span>
+<span class="nc" id="L165">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="fc" id="L166">        }</span>
+<span class="fc" id="L167">        return true;</span>
+    }
+
+
+    public static boolean isUsernameUnique(String username) {
+<span class="fc" id="L172">        try (Scanner scanner = new Scanner(new File(&quot;users.txt&quot;))) {</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">            while (scanner.hasNextLine()) {</span>
+<span class="fc" id="L174">                String line = scanner.nextLine();</span>
+<span class="fc" id="L175">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L176">                String existingUsername = parts[1];</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">                if (existingUsername.equals(username)) {</span>
+<span class="fc" id="L178">                    return false;</span>
+                }
+<span class="fc" id="L180">            }</span>
+<span class="pc" id="L181">        } catch (IOException e) {</span>
+<span class="nc" id="L182">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="fc" id="L183">        }</span>
+<span class="fc" id="L184">        return true;</span>
+    }
+
+
+    public static void saveUserDetails(String idKey, String username, String hashedPassword, String fullName, String phoneNumber, String emailAddress, String role) {
+<span class="fc" id="L189">        try (PrintWriter writer = new PrintWriter(new FileWriter(&quot;users.txt&quot;, true))) {</span>
+<span class="fc" id="L190">            writer.println(idKey + &quot;|&quot; + username + &quot;|&quot; + hashedPassword + &quot;|&quot; + fullName + &quot;|&quot; + phoneNumber + &quot;|&quot; + emailAddress + &quot;|&quot; + role);</span>
+<span class="nc" id="L191">        } catch (IOException e) {</span>
+<span class="nc" id="L192">            System.err.println(&quot;Error writing to users.txt&quot;);</span>
+<span class="fc" id="L193">        }</span>
+<span class="fc" id="L194">    }</span>
+
+
+
+    public static String hashPassword(String password) {
+        try {
+<span class="fc" id="L200">            MessageDigest md = MessageDigest.getInstance(&quot;SHA-256&quot;);</span>
+<span class="fc" id="L201">            byte[] hashedPassword = md.digest(password.getBytes());</span>
+<span class="fc" id="L202">            return Base64.getEncoder().encodeToString(hashedPassword);</span>
+<span class="nc" id="L203">        } catch (NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L204">            System.err.println(&quot;Password hashing error: &quot; + e.getMessage());</span>
+<span class="nc" id="L205">            return null;</span>
+        }
+    }
+
+    public static void loginUser(Scanner scanner) {
+<span class="fc" id="L210">        System.out.println(&quot;\nLogin to your account:&quot;);</span>
+
+<span class="fc" id="L212">        System.out.print(&quot;Enter your username: &quot;);</span>
+<span class="fc" id="L213">        String username = scanner.nextLine();</span>
+
+<span class="fc" id="L215">        System.out.print(&quot;Enter your password: &quot;);</span>
+<span class="fc" id="L216">        String password = scanner.nextLine();</span>
+<span class="fc" id="L217">        String hashedPassword = hashPassword(password);</span>
+
+<span class="fc" id="L219">        User loggedInUser = validateLoginCredentials(username, hashedPassword);</span>
+
+<span class="fc bfc" id="L221" title="All 2 branches covered.">        if (loggedInUser != null) {</span>
+<span class="fc" id="L222">            System.out.println(&quot;\nLogin Successful!&quot;);</span>
+<span class="fc" id="L223">            displayUserDetails(loggedInUser);</span>
+<span class="fc" id="L224">            userMenu(scanner, username);</span>
+        } else {
+<span class="fc" id="L226">            System.out.println(&quot;\nInvalid credentials.&quot;);</span>
+        }
+<span class="fc" id="L228">    }</span>
+
+    public static User validateLoginCredentials(String username, String hashedPassword) {
+<span class="fc" id="L231">        try (Scanner fileScanner = new Scanner(new File(&quot;users.txt&quot;))) {</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L233">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L234">                String[] parts = line.split(&quot;\\|&quot;);</span>
+
+<span class="pc bpc" id="L236" title="1 of 4 branches missed.">                if (parts[1].equals(username) &amp;&amp; parts[2].equals(hashedPassword)) {</span>
+<span class="fc" id="L237">                    return new User(parts[0], parts[1], parts[3], parts[4], parts[5], parts[6]);</span>
+                }
+<span class="fc" id="L239">            }</span>
+<span class="pc" id="L240">        } catch (IOException e) {</span>
+<span class="nc" id="L241">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="fc" id="L242">        }</span>
+<span class="fc" id="L243">        return null;</span>
+    }
+
+    public static void displayUserDetails(User user) {
+<span class="fc" id="L247">        System.out.println(&quot;\nUser Details:&quot;);</span>
+<span class="fc" id="L248">        System.out.println(&quot;ID Key: &quot; + user.getIdKey());</span>
+<span class="fc" id="L249">        System.out.println(&quot;Username: &quot; + user.getUsername());</span>
+<span class="fc" id="L250">        System.out.println(&quot;Full Name: &quot; + user.getFullName());</span>
+<span class="fc" id="L251">        System.out.println(&quot;Phone Number: &quot; + user.getPhoneNumber());</span>
+<span class="fc" id="L252">        System.out.println(&quot;Email Address: &quot; + user.getEmailAddress());</span>
+<span class="fc" id="L253">        System.out.println(&quot;Role: &quot; + user.getRole());</span>
+<span class="fc" id="L254">    }</span>
+
+
+    public static void displayUserInfo(Map&lt;String, String&gt; userDetails) {
+<span class="nc" id="L258">        System.out.println(&quot;User Details:&quot;);</span>
+<span class="nc bnc" id="L259" title="All 2 branches missed.">        for (Map.Entry&lt;String, String&gt; entry : userDetails.entrySet()) {</span>
+<span class="nc" id="L260">            System.out.println(entry.getKey() + &quot;: &quot; + entry.getValue());</span>
+<span class="nc" id="L261">        }</span>
+<span class="nc" id="L262">    }</span>
+
+
+    public static Map&lt;String, String&gt; validateCredentials(String username, String hashedPassword) {
+<span class="fc" id="L266">        try (Scanner fileScanner = new Scanner(new File(&quot;users.txt&quot;))) {</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L268">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L269">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L270">                String existingIdKey = parts[0];</span>
+<span class="fc" id="L271">                String existingUsername = parts[1];</span>
+<span class="fc" id="L272">                String existingHashedPassword = parts[2];</span>
+
+<span class="pc bpc" id="L274" title="3 of 4 branches missed.">                if (existingUsername.equals(username) &amp;&amp; existingHashedPassword.equals(hashedPassword)) {</span>
+<span class="nc" id="L275">                    Map&lt;String, String&gt; userDetails = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L276">                    userDetails.put(&quot;ID Key&quot;, existingIdKey);</span>
+<span class="nc" id="L277">                    userDetails.put(&quot;Username&quot;, existingUsername);</span>
+<span class="nc" id="L278">                    userDetails.put(&quot;Full Name&quot;, parts[3]);</span>
+<span class="nc" id="L279">                    userDetails.put(&quot;Phone Number&quot;, parts[4]);</span>
+<span class="nc" id="L280">                    userDetails.put(&quot;Email Address&quot;, parts[5]);</span>
+<span class="nc" id="L281">                    return userDetails;</span>
+                }
+<span class="fc" id="L283">            }</span>
+<span class="nc" id="L284">        } catch (IOException e) {</span>
+<span class="nc" id="L285">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="fc" id="L286">        }</span>
+<span class="fc" id="L287">        return null;</span>
+    }
+
+    public static void userMenu(Scanner scanner, String username) {
+        while (true) {
+<span class="fc" id="L292">            System.out.println(&quot;\nUser Options:&quot;);</span>
+<span class="fc" id="L293">            System.out.println(&quot;1. Change Password&quot;);</span>
+<span class="fc" id="L294">            System.out.println(&quot;2. Modify User Details&quot;);</span>
+<span class="fc" id="L295">            System.out.println(&quot;3. Scroll System&quot;);</span>
+<span class="fc" id="L296">            System.out.println(&quot;4. Logout&quot;);</span>
+<span class="fc" id="L297">            System.out.print(&quot;Please select an option: &quot;);</span>
+<span class="fc" id="L298">            int choice = scanner.nextInt();</span>
+<span class="fc" id="L299">            scanner.nextLine();</span>
+
+<span class="pc bpc" id="L301" title="2 of 5 branches missed.">            switch (choice) {</span>
+                case 1:
+<span class="nc" id="L303">                    changePassword(scanner, username);</span>
+<span class="nc" id="L304">                    break;</span>
+                case 2:
+<span class="nc" id="L306">                    modifyUserDetails(scanner, username);</span>
+<span class="nc" id="L307">                    break;</span>
+                case 3:
+<span class="fc" id="L309">                    System.out.println(&quot;Enter Scroll system successfully!!&quot;);</span>
+<span class="fc" id="L310">                    ScrollSystem scrollSystem = new ScrollSystem();</span>
+<span class="fc" id="L311">                    scrollSystem.displayMenu(scanner, username);</span>
+<span class="fc" id="L312">                    break;</span>
+                case 4:
+<span class="fc" id="L314">                    return;</span>
+                default:
+<span class="fc" id="L316">                    System.out.println(&quot;Invalid choice. Please select a valid option.&quot;);</span>
+                    break;
+            }
+<span class="fc" id="L319">        }</span>
+    }
+
+
+    public static void changePassword(Scanner scanner, String username) {
+<span class="fc" id="L324">        System.out.print(&quot;Enter your new password: &quot;);</span>
+<span class="fc" id="L325">        String newPassword = hashPassword(scanner.nextLine());</span>
+
+<span class="pc bpc" id="L327" title="1 of 2 branches missed.">        if (updatePassword(username, newPassword)) {</span>
+<span class="nc" id="L328">            System.out.println(&quot;Password updated successfully!&quot;);</span>
+        } else {
+<span class="fc" id="L330">            System.out.println(&quot;Error updating password. Please try again.&quot;);</span>
+        }
+<span class="fc" id="L332">    }</span>
+
+    public static boolean updatePassword(String username, String newHashedPassword) {
+<span class="fc" id="L335">        File usersFile = new File(&quot;users.txt&quot;);</span>
+<span class="fc" id="L336">        List&lt;String&gt; newLines = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L337">        boolean isUpdated = false;</span>
+
+<span class="fc" id="L339">        try (Scanner fileScanner = new Scanner(usersFile)) {</span>
+<span class="fc bfc" id="L340" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L341">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L342">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L343">                String existingUsername = parts[1];</span>
+
+<span class="pc bpc" id="L345" title="1 of 2 branches missed.">                if (existingUsername.equals(username)) {</span>
+<span class="nc" id="L346">                    parts[2] = newHashedPassword;</span>
+<span class="nc" id="L347">                    isUpdated = true;</span>
+                }
+<span class="fc" id="L349">                newLines.add(String.join(&quot;|&quot;, parts));</span>
+<span class="fc" id="L350">            }</span>
+<span class="nc" id="L351">        } catch (IOException e) {</span>
+<span class="nc" id="L352">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="nc" id="L353">            return false;</span>
+<span class="fc" id="L354">        }</span>
+
+<span class="pc bpc" id="L356" title="1 of 2 branches missed.">        if (isUpdated) {</span>
+<span class="nc" id="L357">            try (PrintWriter writer = new PrintWriter(usersFile)) {</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">                for (String line : newLines) {</span>
+<span class="nc" id="L359">                    writer.println(line);</span>
+<span class="nc" id="L360">                }</span>
+<span class="nc" id="L361">                return true;</span>
+<span class="nc" id="L362">            } catch (IOException e) {</span>
+<span class="nc" id="L363">                System.err.println(&quot;Error writing to users.txt&quot;);</span>
+<span class="nc" id="L364">                return false;</span>
+            }
+        } else {
+<span class="fc" id="L367">            return false;</span>
+        }
+    }
+
+    public static void modifyUserDetails(Scanner scanner, String username) {
+<span class="fc" id="L372">        System.out.println(&quot;Modify User Details:&quot;);</span>
+
+<span class="fc" id="L374">        System.out.print(&quot;Enter new username (leave blank to keep current): &quot;);</span>
+<span class="fc" id="L375">        String newUsername = scanner.nextLine();</span>
+<span class="pc bpc" id="L376" title="1 of 2 branches missed.">        if (newUsername.isEmpty()) {</span>
+<span class="nc" id="L377">            newUsername = username;</span>
+        }
+
+<span class="fc" id="L380">        System.out.print(&quot;Enter new full name (leave blank to keep current): &quot;);</span>
+<span class="fc" id="L381">        String newFullName = scanner.nextLine();</span>
+
+<span class="fc" id="L383">        System.out.print(&quot;Enter new phone number (leave blank to keep current): &quot;);</span>
+<span class="fc" id="L384">        String newPhoneNumber = scanner.nextLine();</span>
+
+<span class="fc" id="L386">        System.out.print(&quot;Enter new email address (leave blank to keep current): &quot;);</span>
+<span class="fc" id="L387">        String newEmail = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L389" title="1 of 2 branches missed.">        if (updateUserDetails(username, newUsername, newFullName, newPhoneNumber, newEmail)) {</span>
+<span class="nc" id="L390">            System.out.println(&quot;User details updated successfully!&quot;);</span>
+        } else {
+<span class="fc" id="L392">            System.out.println(&quot;Error updating user details. Please try again.&quot;);</span>
+        }
+<span class="fc" id="L394">    }</span>
+
+    public static boolean updateUserDetails(String oldUsername, String newUsername, String newFullName, String newPhoneNumber, String newEmail) {
+<span class="fc" id="L397">        File usersFile = new File(&quot;users.txt&quot;);</span>
+<span class="fc" id="L398">        List&lt;String&gt; newLines = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L399">        boolean isUpdated = false;</span>
+
+<span class="fc" id="L401">        try (Scanner fileScanner = new Scanner(usersFile)) {</span>
+<span class="fc bfc" id="L402" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L403">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L404">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L405">                String existingUsername = parts[1];</span>
+
+<span class="pc bpc" id="L407" title="1 of 2 branches missed.">                if (existingUsername.equals(oldUsername)) {</span>
+<span class="nc bnc" id="L408" title="All 2 branches missed.">                    parts[1] = newUsername.isEmpty() ? existingUsername : newUsername;</span>
+<span class="nc bnc" id="L409" title="All 2 branches missed.">                    parts[3] = newFullName.isEmpty() ? parts[3] : newFullName;</span>
+<span class="nc bnc" id="L410" title="All 2 branches missed.">                    parts[4] = newPhoneNumber.isEmpty() ? parts[4] : newPhoneNumber;</span>
+<span class="nc bnc" id="L411" title="All 2 branches missed.">                    parts[5] = newEmail.isEmpty() ? parts[5] : newEmail;</span>
+<span class="nc" id="L412">                    isUpdated = true;</span>
+                }
+<span class="fc" id="L414">                newLines.add(String.join(&quot;|&quot;, parts));</span>
+<span class="fc" id="L415">            }</span>
+<span class="nc" id="L416">        } catch (IOException e) {</span>
+<span class="nc" id="L417">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="nc" id="L418">            return false;</span>
+<span class="fc" id="L419">        }</span>
+
+<span class="pc bpc" id="L421" title="1 of 2 branches missed.">        if (isUpdated) {</span>
+<span class="nc" id="L422">            try (PrintWriter writer = new PrintWriter(usersFile)) {</span>
+<span class="nc bnc" id="L423" title="All 2 branches missed.">                for (String line : newLines) {</span>
+<span class="nc" id="L424">                    writer.println(line);</span>
+<span class="nc" id="L425">                }</span>
+<span class="nc" id="L426">                return true;</span>
+<span class="nc" id="L427">            } catch (IOException e) {</span>
+<span class="nc" id="L428">                System.err.println(&quot;Error writing to users.txt&quot;);</span>
+<span class="nc" id="L429">                return false;</span>
+            }
+        } else {
+<span class="fc" id="L432">            return false;</span>
+        }
+    }
+    public static void forgotPassword(Scanner scanner) {
+<span class="fc" id="L436">        System.out.println(&quot;\nForgot Password Process:&quot;);</span>
+
+<span class="fc" id="L438">        System.out.print(&quot;Enter your unique ID key: &quot;);</span>
+<span class="fc" id="L439">        String idKey = scanner.nextLine();</span>
+
+<span class="fc" id="L441">        System.out.print(&quot;Enter your email address: &quot;);</span>
+<span class="fc" id="L442">        String emailAddress = scanner.nextLine();</span>
+
+<span class="fc" id="L444">        String username = validateUserByIdAndEmail(idKey, emailAddress);</span>
+
+<span class="pc bpc" id="L446" title="1 of 2 branches missed.">        if (username != null) {</span>
+<span class="nc" id="L447">            System.out.print(&quot;Enter a new password: &quot;);</span>
+<span class="nc" id="L448">            String newPassword = scanner.nextLine();</span>
+<span class="nc" id="L449">            String hashedNewPassword = hashPassword(newPassword);</span>
+<span class="nc bnc" id="L450" title="All 2 branches missed.">            if (resetUserPassword(username, hashedNewPassword)) {</span>
+<span class="nc" id="L451">                System.out.println(&quot;Password reset successfully!&quot;);</span>
+            } else {
+<span class="nc" id="L453">                System.out.println(&quot;Error resetting password. Please try again.&quot;);</span>
+            }
+<span class="nc" id="L455">        } else {</span>
+<span class="fc" id="L456">            System.out.println(&quot;No user found with the provided ID key and email address.&quot;);</span>
+        }
+<span class="fc" id="L458">    }</span>
+    public static String validateUserByIdAndEmail(String idKey, String email) {
+<span class="fc" id="L460">        try (Scanner fileScanner = new Scanner(new File(&quot;users.txt&quot;))) {</span>
+<span class="fc bfc" id="L461" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L462">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L463">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L464">                String existingIdKey = parts[0];</span>
+<span class="fc" id="L465">                String existingEmail = parts[5];</span>
+
+<span class="pc bpc" id="L467" title="3 of 4 branches missed.">                if (existingIdKey.equals(idKey) &amp;&amp; existingEmail.equals(email)) {</span>
+<span class="nc" id="L468">                    return parts[1];</span>
+                }
+<span class="fc" id="L470">            }</span>
+<span class="nc" id="L471">        } catch (IOException e) {</span>
+<span class="nc" id="L472">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="fc" id="L473">        }</span>
+<span class="fc" id="L474">        return null;</span>
+    }
+    public static boolean resetUserPassword(String username, String hashedNewPassword) {
+<span class="fc" id="L477">        File usersFile = new File(&quot;users.txt&quot;);</span>
+<span class="fc" id="L478">        List&lt;String&gt; newLines = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L479">        boolean isUpdated = false;</span>
+
+<span class="fc" id="L481">        try (Scanner fileScanner = new Scanner(usersFile)) {</span>
+<span class="fc bfc" id="L482" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L483">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L484">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L485">                String existingUsername = parts[1];</span>
+
+<span class="pc bpc" id="L487" title="1 of 2 branches missed.">                if (existingUsername.equals(username)) {</span>
+<span class="nc" id="L488">                    parts[2] = hashedNewPassword;</span>
+<span class="nc" id="L489">                    isUpdated = true;</span>
+                }
+<span class="fc" id="L491">                newLines.add(String.join(&quot;|&quot;, parts));</span>
+<span class="fc" id="L492">            }</span>
+<span class="nc" id="L493">        } catch (IOException e) {</span>
+<span class="nc" id="L494">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="nc" id="L495">            return false;</span>
+<span class="fc" id="L496">        }</span>
+
+<span class="pc bpc" id="L498" title="1 of 2 branches missed.">        if (isUpdated) {</span>
+<span class="nc" id="L499">            try (PrintWriter writer = new PrintWriter(usersFile)) {</span>
+<span class="nc bnc" id="L500" title="All 2 branches missed.">                for (String line : newLines) {</span>
+<span class="nc" id="L501">                    writer.println(line);</span>
+<span class="nc" id="L502">                }</span>
+<span class="nc" id="L503">                return true;</span>
+<span class="nc" id="L504">            } catch (IOException e) {</span>
+<span class="nc" id="L505">                System.err.println(&quot;Error writing to users.txt&quot;);</span>
+<span class="nc" id="L506">                return false;</span>
+            }
+        } else {
+<span class="fc" id="L509">            return false;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

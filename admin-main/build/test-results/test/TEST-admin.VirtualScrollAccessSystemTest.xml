@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="admin.VirtualScrollAccessSystemTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2023-10-27T11:19:41" hostname="Palaks-MacBook-Pro.local" time="0.038">
+  <properties/>
+  <testcase name="testInvalidUser()" classname="admin.VirtualScrollAccessSystemTest" time="0.011"/>
+  <testcase name="testLoginUserWithInvalidCredentials()" classname="admin.VirtualScrollAccessSystemTest" time="0.002"/>
+  <testcase name="testDisplayMainMenu()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <testcase name="testModifyUserDetails()" classname="admin.VirtualScrollAccessSystemTest" time="0.002"/>
+  <testcase name="testUserMenuLogout()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <testcase name="testLoginUserWithValidCredentials()" classname="admin.VirtualScrollAccessSystemTest" time="0.002"/>
+  <testcase name="testUserMenuScroll()" classname="admin.VirtualScrollAccessSystemTest" time="0.003"/>
+  <testcase name="testChangePasswordSuccess()" classname="admin.VirtualScrollAccessSystemTest" time="0.002"/>
+  <testcase name="givenExistingIdKey_whenCheckIsIdKeyUnique_thenResultIsFalse()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <testcase name="testRegisterUserSuccess()" classname="admin.VirtualScrollAccessSystemTest" time="0.002"/>
+  <testcase name="testForgotPassword()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <testcase name="testRegisterUserWithInvalidname()" classname="admin.VirtualScrollAccessSystemTest" time="0.002"/>
+  <testcase name="testUserMenuNone()" classname="admin.VirtualScrollAccessSystemTest" time="0.002"/>
+  <testcase name="givenNewIdKey_whenCheckIsIdKeyUnique_thenResultIsTrue()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <testcase name="testHashPassword()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <testcase name="testResetUserPassword()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <testcase name="testRegisterUserWithInvalidId()" classname="admin.VirtualScrollAccessSystemTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Oct 27, 2023 10:19:41 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+]]></system-err>
+</testsuite>

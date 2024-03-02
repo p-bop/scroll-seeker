@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">admin-main</a> &gt; <a href="index.source.html" class="el_package">admin</a> &gt; <span class="el_source">AdminManager.java</span></div><h1>AdminManager.java</h1><pre class="source lang-java linenums">package admin;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+<span class="nc" id="L10">public class AdminManager {</span>
+<span class="fc" id="L11">    private static Scanner scanner = new Scanner(System.in);</span>
+
+    public static void start() throws IOException {
+<span class="fc" id="L14">        AdminInterface ai = new AdminInterface();</span>
+
+        while (true) {
+<span class="fc" id="L17">            int choice = ai.promptOptions();</span>
+<span class="pc bpc" id="L18" title="2 of 4 branches missed.">            if (choice &gt;= 1 &amp;&amp; choice &lt;= 6) {</span>
+<span class="pc bpc" id="L19" title="5 of 6 branches missed.">                switch (choice) {</span>
+                    case 1:
+<span class="nc" id="L21">                        System.out.println(&quot;View a list of all users and their profiles&quot;);</span>
+<span class="nc" id="L22">                        listAllUsers();</span>
+<span class="nc" id="L23">                        break;</span>
+                    case 2:
+<span class="nc" id="L25">                        System.out.println(&quot;Add a user&quot;);</span>
+<span class="nc" id="L26">                        addUser();</span>
+<span class="nc" id="L27">                        break;</span>
+                    case 3:
+<span class="nc" id="L29">                        System.out.println(&quot;Delete a user&quot;);</span>
+<span class="nc" id="L30">                        deleteUser();</span>
+<span class="nc" id="L31">                        break;</span>
+                    case 4:
+<span class="nc" id="L33">                        System.out.println(&quot;Welcome to Scroll System&quot;);</span>
+<span class="nc" id="L34">                        AdminScrollSystem adminscrollSystem = new AdminScrollSystem();</span>
+<span class="nc" id="L35">                        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L36">                        adminscrollSystem.displayMenu(scanner);</span>
+<span class="nc" id="L37">                        break;</span>
+                    case 5:
+<span class="fc" id="L39">                        System.out.println(&quot;See you soon Admin!&quot;);</span>
+<span class="pc" id="L40">                        return;</span>
+                    default:
+                }
+            }else{
+<span class="nc" id="L44">                System.out.println(&quot;\nInvalid choice. Please select a valid option.\n&quot;);</span>
+            }
+<span class="nc" id="L46">        }</span>
+    }
+    public static void listAllUsers() {
+<span class="fc" id="L49">        try (Scanner fileScanner = new Scanner(new File(&quot;users.txt&quot;))) {</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L51">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L52">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L53">                String idKey = parts[0];</span>
+<span class="fc" id="L54">                String username = parts[1];</span>
+<span class="fc" id="L55">                String fullName = parts[3];</span>
+<span class="fc" id="L56">                String phoneNumber = parts[4];</span>
+<span class="fc" id="L57">                String emailAddress = parts[5];</span>
+<span class="fc" id="L58">                String role = parts[6];</span>
+
+<span class="fc" id="L60">                System.out.println(&quot;ID Key: &quot; + idKey);</span>
+<span class="fc" id="L61">                System.out.println(&quot;Username: &quot; + username);</span>
+<span class="fc" id="L62">                System.out.println(&quot;Full Name: &quot; + fullName);</span>
+<span class="fc" id="L63">                System.out.println(&quot;Phone Number: &quot; + phoneNumber);</span>
+<span class="fc" id="L64">                System.out.println(&quot;Email Address: &quot; + emailAddress);</span>
+<span class="fc" id="L65">                System.out.println(&quot;Role: &quot; + role);</span>
+<span class="fc" id="L66">                System.out.println(&quot;------------------------------&quot;);</span>
+<span class="fc" id="L67">            }</span>
+<span class="nc" id="L68">        } catch (IOException e) {</span>
+<span class="nc" id="L69">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="fc" id="L70">        }</span>
+<span class="fc" id="L71">    }</span>
+
+    public static void addUser() {
+        String idKey;
+        String username;
+        String password;
+        String fullName;
+        String phoneNumber;
+        String emailAddress;
+        String role;
+
+        while (true) {
+<span class="fc" id="L83">            System.out.print(&quot;Enter a unique ID key: &quot;);</span>
+<span class="fc" id="L84">            idKey = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">            if (!VirtualScrollAccessSystem.isIdKeyUnique(idKey)) {</span>
+<span class="nc" id="L87">                System.out.println(&quot;ID key is not unique. Please choose a different one.&quot;);</span>
+            } else {
+                break;
+            }
+        }
+
+
+        while (true) {
+<span class="fc" id="L95">            System.out.print(&quot;Enter a username: &quot;);</span>
+<span class="fc" id="L96">            username = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">            if (!VirtualScrollAccessSystem.isUsernameUnique(username)) {</span>
+<span class="nc" id="L99">                System.out.println(&quot;Username is not unique. Please choose a different one.&quot;);</span>
+            } else {
+                break;
+            }
+        }
+
+
+<span class="fc" id="L106">        System.out.print(&quot;Enter a password: &quot;);</span>
+<span class="fc" id="L107">        password = VirtualScrollAccessSystem.hashPassword(scanner.nextLine());</span>
+
+        while (true) {
+<span class="fc" id="L110">            System.out.print(&quot;Enter the user's full name (cannot include numbers): &quot;);</span>
+<span class="fc" id="L111">            fullName = scanner.nextLine();</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">            if (!fullName.matches(&quot;.*\\d+.*&quot;)) {</span>
+<span class="fc" id="L113">                break;</span>
+            } else {
+<span class="nc" id="L115">                System.out.println(&quot;Full name cannot contain digits. Please try again.&quot;);</span>
+            }
+        }
+
+
+        while (true) {
+<span class="fc" id="L121">            System.out.print(&quot;Enter the user's phone number (10 digits): &quot;);</span>
+<span class="fc" id="L122">            phoneNumber = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">            if (phoneNumber.matches(&quot;\\d{10}&quot;)) {</span>
+<span class="fc" id="L125">                break;</span>
+            } else {
+<span class="nc" id="L127">                System.out.println(&quot;Phone number must be exactly 10 digits long. Please try again.&quot;);</span>
+            }
+        }
+
+        while (true) {
+<span class="fc" id="L132">            System.out.print(&quot;Enter the user's email address (320 characters or less): &quot;);</span>
+<span class="fc" id="L133">            emailAddress = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">            if (emailAddress.length() &lt;= 320) {</span>
+<span class="fc" id="L136">                break;</span>
+            } else {
+<span class="nc" id="L138">                System.out.println(&quot;Email address must be 320 characters or less. Please try again.&quot;);</span>
+            }
+        }
+
+<span class="fc" id="L142">        role = &quot;user&quot;;</span>
+
+<span class="fc" id="L144">        VirtualScrollAccessSystem.saveUserDetails(idKey, username, password, fullName, phoneNumber, emailAddress, role);</span>
+<span class="fc" id="L145">        System.out.println(&quot;User added successfully!&quot;);</span>
+<span class="fc" id="L146">    }</span>
+
+
+    public static void deleteUser() {
+<span class="nc" id="L150">        System.out.print(&quot;Enter the username of the user to delete: &quot;);</span>
+<span class="nc" id="L151">        String usernameToDelete = scanner.nextLine();</span>
+
+<span class="nc bnc" id="L153" title="All 2 branches missed.">        if (deleteUserByUsername(usernameToDelete)) {</span>
+<span class="nc" id="L154">            System.out.println(&quot;User deleted successfully.&quot;);</span>
+        } else {
+<span class="nc" id="L156">            System.out.println(&quot;User not found or error deleting the user.&quot;);</span>
+        }
+<span class="nc" id="L158">    }</span>
+
+    public static boolean deleteUserByUsername(String username) {
+<span class="fc" id="L161">        File usersFile = new File(&quot;users.txt&quot;);</span>
+<span class="fc" id="L162">        List&lt;String&gt; newLines = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L163">        boolean isDeleted = false;</span>
+
+<span class="fc" id="L165">        try (Scanner fileScanner = new Scanner(usersFile)) {</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">            while (fileScanner.hasNextLine()) {</span>
+<span class="fc" id="L167">                String line = fileScanner.nextLine();</span>
+<span class="fc" id="L168">                String[] parts = line.split(&quot;\\|&quot;);</span>
+<span class="fc" id="L169">                String existingUsername = parts[1];</span>
+
+<span class="fc bfc" id="L171" title="All 2 branches covered.">                if (!existingUsername.equals(username)) {</span>
+<span class="fc" id="L172">                    newLines.add(line);</span>
+                } else {
+<span class="fc" id="L174">                    isDeleted = true;</span>
+                }
+<span class="fc" id="L176">            }</span>
+<span class="nc" id="L177">        } catch (IOException e) {</span>
+<span class="nc" id="L178">            System.err.println(&quot;Error: 'users.txt' file not found.&quot;);</span>
+<span class="nc" id="L179">            return false;</span>
+<span class="fc" id="L180">        }</span>
+
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">        if (isDeleted) {</span>
+<span class="fc" id="L183">            try (PrintWriter writer = new PrintWriter(usersFile)) {</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">                for (String line : newLines) {</span>
+<span class="fc" id="L185">                    writer.println(line);</span>
+<span class="fc" id="L186">                }</span>
+<span class="fc" id="L187">                return true;</span>
+<span class="nc" id="L188">            } catch (IOException e) {</span>
+<span class="nc" id="L189">                System.err.println(&quot;Error writing to users.txt&quot;);</span>
+<span class="nc" id="L190">                return false;</span>
+            }
+        } else {
+<span class="nc" id="L193">            return false;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ScrollSystem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">admin-main</a> &gt; <a href="index.source.html" class="el_package">admin</a> &gt; <span class="el_source">ScrollSystem.java</span></div><h1>ScrollSystem.java</h1><pre class="source lang-java linenums">package admin;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+public class ScrollSystem {
+<span class="fc" id="L15">    private static final Logger logger = Logger.getLogger(ScrollSystem.class.getName());</span>
+
+<span class="fc" id="L17">    public ScrollSystem() {</span>
+        try {
+<span class="fc" id="L19">            FileHandler fileHandler = new FileHandler(&quot;scroll_system_log.txt&quot;, true);</span>
+<span class="fc" id="L20">            logger.addHandler(fileHandler);</span>
+<span class="fc" id="L21">            SimpleFormatter formatter = new SimpleFormatter();</span>
+<span class="fc" id="L22">            fileHandler.setFormatter(formatter);</span>
+<span class="fc" id="L23">        } catch (IOException e) {</span>
+<span class="fc" id="L24">            e.printStackTrace();</span>
+<span class="fc" id="L25">        }</span>
+<span class="fc" id="L26">    }</span>
+
+    public void displayMenu(Scanner scanner, String username) {
+        while (true) {
+<span class="fc" id="L30">            System.out.println(&quot;\nScroll System Options:&quot;);</span>
+<span class="fc" id="L31">            System.out.println(&quot;1. Display all scrolls&quot;);</span>
+<span class="fc" id="L32">            System.out.println(&quot;2. Create a new scroll&quot;);</span>
+<span class="fc" id="L33">            System.out.println(&quot;3. Upload a new scroll&quot;);</span>
+<span class="fc" id="L34">            System.out.println(&quot;4. Update a scroll&quot;);</span>
+<span class="fc" id="L35">            System.out.println(&quot;5. Delete a scroll&quot;);</span>
+<span class="fc" id="L36">            System.out.println(&quot;6. Search&quot;);</span>
+<span class="fc" id="L37">            System.out.println(&quot;0. Return to user menu&quot;);</span>
+<span class="fc" id="L38">            System.out.print(&quot;Please select an option: &quot;);</span>
+<span class="fc" id="L39">            int choice = scanner.nextInt();</span>
+<span class="fc" id="L40">            scanner.nextLine();</span>
+
+<span class="pc bpc" id="L42" title="5 of 8 branches missed.">            switch (choice) {</span>
+                case 1:
+<span class="fc" id="L44">                    displayAllScrolls(scanner, username);</span>
+<span class="fc" id="L45">                    break;</span>
+                case 2:
+<span class="nc" id="L47">                    addNewScroll(scanner, username);</span>
+<span class="nc" id="L48">                    break;</span>
+                case 3:
+<span class="nc" id="L50">                    uploadScroll(scanner, username);</span>
+<span class="nc" id="L51">                    break;</span>
+                case 4:
+<span class="nc" id="L53">                    modifyScroll(scanner, username);</span>
+<span class="nc" id="L54">                    break;</span>
+                case 5:
+<span class="nc" id="L56">                    deleteScroll(scanner, username);</span>
+<span class="nc" id="L57">                    break;</span>
+                case 6:
+<span class="nc" id="L59">                    searchScrolls(scanner);</span>
+<span class="nc" id="L60">                    break;</span>
+                case 0:
+<span class="fc" id="L62">                    logTaskCompletion(username, &quot;returned to the user menu&quot;);</span>
+<span class="fc" id="L63">                    return;</span>
+                default:
+<span class="fc" id="L65">                    System.out.println(&quot;Invalid choice. Please select a valid option.&quot;);</span>
+                    break;
+            }
+<span class="fc" id="L68">        }</span>
+    }
+
+    public void logTaskCompletion(String username, String task) {
+<span class="fc" id="L72">        logger.info(username + &quot; completed the task: &quot; + task);</span>
+<span class="fc" id="L73">    }</span>
+
+    public void saveContentToFile(String fileName, String content) {
+<span class="fc" id="L76">        String downloadsFolder = &quot;downloads&quot;;</span>
+<span class="fc" id="L77">        Path downloadsPath = Paths.get(downloadsFolder);</span>
+
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if (!Files.exists(downloadsPath)) {</span>
+            try {
+<span class="fc" id="L81">                Files.createDirectory(downloadsPath);</span>
+<span class="nc" id="L82">            } catch (IOException e) {</span>
+<span class="nc" id="L83">                System.out.println(&quot;Error creating the downloads folder.&quot;);</span>
+<span class="nc" id="L84">                return;</span>
+<span class="fc" id="L85">            }</span>
+        }
+
+<span class="fc" id="L88">        Path filePath = downloadsPath.resolve(fileName);</span>
+
+        try {
+<span class="fc" id="L91">            Files.write(filePath, content.getBytes());</span>
+<span class="fc" id="L92">            System.out.println(&quot;Scroll downloaded as: &quot; + filePath);</span>
+<span class="nc" id="L93">        } catch (IOException e) {</span>
+<span class="nc" id="L94">            System.out.println(&quot;Error saving the downloaded scroll to a file: &quot; + filePath);</span>
+<span class="fc" id="L95">        }</span>
+<span class="fc" id="L96">    }</span>
+
+    public void displayAllScrolls(Scanner scanner, String username) {
+<span class="fc" id="L99">        String directoryPath = &quot;digital_scrolls&quot;;</span>
+<span class="fc" id="L100">        Path path = Paths.get(directoryPath);</span>
+<span class="fc" id="L101">        List&lt;String&gt; scrollFiles = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L103">        try (DirectoryStream&lt;Path&gt; stream = Files.newDirectoryStream(path, &quot;*.txt&quot;)) {</span>
+<span class="fc" id="L104">            System.out.println(&quot;\nList of Scrolls:&quot;);</span>
+<span class="fc" id="L105">            int index = 1;</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">            for (Path file : stream) {</span>
+<span class="fc" id="L107">                String scrollName = file.getFileName().toString();</span>
+<span class="fc" id="L108">                scrollFiles.add(scrollName);</span>
+<span class="fc" id="L109">                System.out.println(index++ + &quot;. &quot; + scrollName);</span>
+<span class="fc" id="L110">                displayScrollStats(scrollName);</span>
+<span class="fc" id="L111">            }</span>
+<span class="fc" id="L112">            System.out.println(&quot;-----------------------------&quot;);</span>
+<span class="fc" id="L113">            System.out.println(index++ + &quot;. Download a scroll&quot;);</span>
+<span class="nc" id="L114">        } catch (IOException e) {</span>
+<span class="nc" id="L115">            System.out.println(&quot;Error reading from the directory: &quot; + directoryPath);</span>
+<span class="nc" id="L116">            return;</span>
+<span class="fc" id="L117">        }</span>
+
+        while (true) {
+<span class="fc" id="L120">            System.out.print(&quot;\nSelect an option (Enter the number, or 0 to return): &quot;);</span>
+<span class="fc" id="L121">            int choice = scanner.nextInt();</span>
+<span class="fc" id="L122">            scanner.nextLine();</span>
+
+<span class="pc bpc" id="L124" title="3 of 4 branches missed.">            if (choice &gt;= 1 &amp;&amp; choice &lt; scrollFiles.size() + 1) {</span>
+<span class="nc" id="L125">                String selectedScroll = scrollFiles.get(choice - 1);</span>
+<span class="nc" id="L126">                showVersionsAndContent(scanner, &quot;digital_scrolls/&quot; + selectedScroll);</span>
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">            }else if (choice == scrollFiles.size() + 1) {</span>
+<span class="nc" id="L128">                downloadScroll(scanner, scrollFiles, username);</span>
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">            }else if (choice == 0) {</span>
+<span class="fc" id="L130">                return;</span>
+            } else {
+<span class="nc" id="L132">                System.out.println(&quot;Invalid choice.&quot;);</span>
+            }
+<span class="nc" id="L134">        }</span>
+    }
+
+    public void downloadScroll(Scanner scanner, List&lt;String&gt; scrollFiles, String username) {
+<span class="fc" id="L138">        System.out.print(&quot;Select a scroll to download (Enter the number, or 0 to return): &quot;);</span>
+<span class="fc" id="L139">        int choice = scanner.nextInt();</span>
+<span class="fc" id="L140">        scanner.nextLine();</span>
+
+<span class="pc bpc" id="L142" title="2 of 4 branches missed.">        if (choice &gt; 0 &amp;&amp; choice &lt;= scrollFiles.size()) {</span>
+<span class="fc" id="L143">            String selectedScroll = scrollFiles.get(choice - 1);</span>
+<span class="fc" id="L144">            String scrollPath = &quot;digital_scrolls/&quot; + selectedScroll;</span>
+<span class="fc" id="L145">            String scrollContent = readBinaryFile(scrollPath);</span>
+<span class="fc" id="L146">            String scrollId = extractScrollIdFromPath(scrollPath);</span>
+<span class="fc" id="L147">            incrementDownloadCount(scrollId);</span>
+
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">            if (scrollContent != null) {</span>
+<span class="fc" id="L150">                String[] scrollVersions = scrollContent.split(VERSION_SEPARATOR);</span>
+<span class="fc" id="L151">                System.out.println(&quot;Available versions:&quot;);</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">                for (int i = 0; i &lt; scrollVersions.length; i++) {</span>
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">                    if (!scrollVersions[i].trim().isEmpty()) {</span>
+<span class="fc" id="L154">                        System.out.println((i + 1) + &quot;. Version &quot; + (i + 1));</span>
+<span class="fc" id="L155">                        System.out.println(&quot;Preview:&quot;);</span>
+<span class="fc" id="L156">                        System.out.println(scrollVersions[i].substring(0, Math.min(scrollVersions[i].length(), 500)));</span>
+                    }
+                }
+
+<span class="fc" id="L160">                System.out.print(&quot;Select a version to download (Enter the number, or 0 to return): &quot;);</span>
+<span class="fc" id="L161">                int versionChoice = scanner.nextInt();</span>
+<span class="fc" id="L162">                scanner.nextLine();</span>
+
+<span class="pc bpc" id="L164" title="2 of 4 branches missed.">                if (versionChoice &gt;= 1 &amp;&amp; versionChoice &lt;= scrollVersions.length) {</span>
+<span class="fc" id="L165">                    String selectedVersion = scrollVersions[versionChoice - 1];</span>
+<span class="fc" id="L166">                    String fileName = selectedScroll.replace(&quot;.bin&quot;, &quot;.txt&quot;);</span>
+<span class="fc" id="L167">                    saveContentToFile(fileName, selectedVersion);</span>
+<span class="fc" id="L168">                    logTaskCompletion(username, &quot;downloaded a scroll: &quot; + selectedScroll);</span>
+<span class="pc bnc" id="L169" title="All 2 branches missed.">                } else if (versionChoice == 0) {</span>
+<span class="nc" id="L170">                    return;</span>
+                } else {
+<span class="nc" id="L172">                    System.out.println(&quot;Invalid choice.&quot;);</span>
+                }
+            }
+<span class="pc bnc" id="L175" title="All 2 branches missed.">        } else if (choice == 0) {</span>
+<span class="nc" id="L176">            return;</span>
+        } else {
+<span class="nc" id="L178">            System.out.println(&quot;Invalid choice.&quot;);</span>
+        }
+<span class="fc" id="L180">    }</span>
+
+    public void showVersionsAndContent(Scanner scanner, String filePath) {
+<span class="fc" id="L183">        String scrollContent = readBinaryFile(filePath);</span>
+<span class="pc bpc" id="L184" title="1 of 2 branches missed.">        if (scrollContent == null) {</span>
+<span class="nc" id="L185">            return;</span>
+        }
+
+<span class="fc" id="L188">        String[] versions = scrollContent.split(VERSION_SEPARATOR);</span>
+<span class="fc" id="L189">        System.out.println(&quot;\nAvailable versions:&quot;);</span>
+<span class="fc bfc" id="L190" title="All 2 branches covered.">        for (int i = 0; i &lt; versions.length; i++) {</span>
+<span class="pc bpc" id="L191" title="1 of 2 branches missed.">            if (!versions[i].trim().isEmpty()) {</span>
+<span class="fc" id="L192">                System.out.println((i + 1) + &quot;. Version &quot; + (i + 1));</span>
+            }
+        }
+
+        while (true) {
+<span class="fc" id="L197">            System.out.print(&quot;Select a version to view its content (Enter the number, or 0 to return): &quot;);</span>
+<span class="fc" id="L198">            int choice = scanner.nextInt();</span>
+<span class="fc" id="L199">            scanner.nextLine();</span>
+
+<span class="pc bpc" id="L201" title="1 of 4 branches missed.">            if (choice &gt;= 1 &amp;&amp; choice &lt;= versions.length) {</span>
+<span class="fc" id="L202">                System.out.println(&quot;\nContent of Version &quot; + choice + &quot;:\n&quot; + versions[choice - 1]);</span>
+<span class="fc" id="L203">                String scrollId = extractScrollIdFromPath(filePath);</span>
+<span class="fc" id="L204">                incrementViewCount(scrollId);</span>
+<span class="pc bpc" id="L205" title="1 of 2 branches missed.">            } else if (choice == 0) {</span>
+<span class="fc" id="L206">                return;</span>
+            } else {
+<span class="nc" id="L208">                System.out.println(&quot;Invalid choice.&quot;);</span>
+            }
+<span class="fc" id="L210">        }</span>
+    }
+
+    public String readBinaryFile(String filename) {
+<span class="fc" id="L214">        Path path = Paths.get(filename);</span>
+        try {
+<span class="fc" id="L216">            byte[] bytes = Files.readAllBytes(path);</span>
+<span class="fc" id="L217">            return new String(bytes);</span>
+<span class="fc" id="L218">        } catch (IOException e) {</span>
+<span class="fc" id="L219">            System.out.println(&quot;Error reading the file: &quot; + filename);</span>
+<span class="fc" id="L220">            return null;</span>
+        }
+    }
+
+    public void addNewScroll(Scanner scanner, String username) {
+<span class="fc" id="L225">        System.out.print(&quot;Enter Scroll ID: &quot;);</span>
+<span class="fc" id="L226">        String id = scanner.nextLine();</span>
+
+<span class="fc bfc" id="L228" title="All 2 branches covered.">        if (doesIdExist(id)) {</span>
+<span class="fc" id="L229">            System.out.println(&quot;This ID already exists. Please enter a unique ID.&quot;);</span>
+<span class="fc" id="L230">            return;</span>
+        }
+
+<span class="fc" id="L233">        System.out.print(&quot;Enter Scroll Name: &quot;);</span>
+<span class="fc" id="L234">        String name = scanner.nextLine();</span>
+
+<span class="fc" id="L236">        System.out.print(&quot;Enter Scroll Content (only 0s and 1s allowed): &quot;);</span>
+<span class="fc" id="L237">        String content = scanner.nextLine();</span>
+
+
+<span class="pc bpc" id="L240" title="1 of 2 branches missed.">        if (!content.matches(&quot;[01]+&quot;)) {</span>
+<span class="nc" id="L241">            System.out.println(&quot;Invalid content. Only 0s and 1s are allowed.&quot;);</span>
+<span class="nc" id="L242">            return;</span>
+        }
+
+<span class="fc" id="L245">        String path = &quot;digital_scrolls/&quot; + id + &quot;_&quot; + name + &quot;.txt&quot;;</span>
+
+<span class="fc" id="L247">        saveContentToBinaryFile(path, content);</span>
+
+<span class="fc" id="L249">        Scroll scroll = new Scroll(id, name, path, username);</span>
+<span class="fc" id="L250">        saveScrollDetails(scroll);</span>
+
+<span class="fc" id="L252">        logTaskCompletion(username, &quot;created a new scroll&quot;);</span>
+<span class="fc" id="L253">    }</span>
+
+
+    public boolean doesIdExist(String id) {
+<span class="fc" id="L257">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+<span class="pc bpc" id="L258" title="1 of 2 branches missed.">        if (!Files.exists(filePath)) {</span>
+<span class="nc" id="L259">            return false;</span>
+        }
+
+<span class="fc" id="L262">        try (BufferedReader reader = Files.newBufferedReader(filePath)) {</span>
+            String line;
+<span class="fc bfc" id="L264" title="All 2 branches covered.">            while ((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L265">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="pc bpc" id="L266" title="1 of 4 branches missed.">                if (parts.length &gt; 0 &amp;&amp; parts[0].equals(id)) {</span>
+<span class="fc" id="L267">                    return true;</span>
+                }
+<span class="fc" id="L269">            }</span>
+<span class="pc bpc" id="L270" title="1 of 2 branches missed.">        } catch (IOException e) {</span>
+<span class="nc" id="L271">            System.out.println(&quot;Error reading the scrolls.txt file.&quot;);</span>
+<span class="fc" id="L272">        }</span>
+
+<span class="fc" id="L274">        return false;</span>
+    }
+
+    public void saveScrollDetails(Scroll scroll) {
+<span class="fc" id="L278">        String content = scroll.getId() + &quot;,&quot; + scroll.getName() + &quot;,&quot; + scroll.getPath() + &quot;,&quot; + scroll.getAuthor() + &quot;,0,0&quot;+&quot;\n&quot;;</span>
+
+<span class="fc" id="L280">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+        try {
+<span class="fc" id="L282">            Files.write(filePath, content.getBytes(), StandardOpenOption.APPEND);</span>
+<span class="nc" id="L283">        } catch (IOException e) {</span>
+<span class="nc" id="L284">            System.out.println(&quot;Error writing to the scrolls.txt file.&quot;);</span>
+<span class="fc" id="L285">        }</span>
+<span class="fc" id="L286">    }</span>
+
+    public void saveContentToBinaryFile(String path, String content) {
+        try {
+<span class="fc" id="L290">            Files.write(Paths.get(path), content.getBytes());</span>
+<span class="fc" id="L291">            System.out.println(&quot;Create scroll successfully!!!&quot;);</span>
+<span class="nc" id="L292">        } catch (IOException e) {</span>
+<span class="nc" id="L293">            System.out.println(&quot;Error writing content to the binary file: &quot; + path);</span>
+<span class="fc" id="L294">        }</span>
+<span class="fc" id="L295">    }</span>
+
+    public void uploadScroll(Scanner scanner, String username) {
+<span class="fc" id="L298">        System.out.print(&quot;Enter Scroll ID: &quot;);</span>
+<span class="fc" id="L299">        String id = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L301" title="1 of 2 branches missed.">        if (doesIdExist(id)) {</span>
+<span class="nc" id="L302">            System.out.println(&quot;This ID already exists. Please enter a unique ID.&quot;);</span>
+<span class="nc" id="L303">            return;</span>
+        }
+
+<span class="fc" id="L306">        System.out.print(&quot;Enter Scroll Name: &quot;);</span>
+<span class="fc" id="L307">        String name = scanner.nextLine();</span>
+
+<span class="fc" id="L309">        System.out.print(&quot;Enter the path to your scroll: &quot;);</span>
+<span class="fc" id="L310">        String sourcePath = scanner.nextLine();</span>
+
+<span class="fc" id="L312">        String targetPathStr = &quot;digital_scrolls/&quot; + id + &quot;_&quot; + name + &quot;.txt&quot;;</span>
+<span class="fc" id="L313">        Path source = Paths.get(sourcePath);</span>
+<span class="fc" id="L314">        Path target = Paths.get(targetPathStr);</span>
+
+        try {
+<span class="fc" id="L317">            Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);</span>
+<span class="fc" id="L318">            Scroll scroll = new Scroll(id, name, targetPathStr, username);</span>
+<span class="fc" id="L319">            saveScrollDetails(scroll);</span>
+<span class="fc" id="L320">            System.out.println(&quot;Scroll uploaded successfully!&quot;);</span>
+<span class="nc" id="L321">        } catch (IOException e) {</span>
+<span class="nc" id="L322">            System.out.println(&quot;Error uploading the scroll. Please check the provided path and try again.&quot;);</span>
+<span class="fc" id="L323">        }</span>
+
+<span class="fc" id="L325">        logTaskCompletion(username, &quot;uploaded a new scroll&quot;);</span>
+<span class="fc" id="L326">    }</span>
+
+<span class="fc" id="L328">    private final String VERSION_SEPARATOR = &quot;---END OF VERSION---&quot;;</span>
+
+    public void modifyScroll(Scanner scanner, String username) {
+<span class="fc" id="L331">        System.out.println(&quot;Scrolls authored by you:&quot;);</span>
+<span class="fc" id="L332">        List&lt;String&gt; userScrolls = getScrollsByAuthor(username);</span>
+
+<span class="fc bfc" id="L334" title="All 2 branches covered.">        if (userScrolls.isEmpty()) {</span>
+<span class="fc" id="L335">            System.out.println(&quot;You haven't authored any scrolls yet.&quot;);</span>
+<span class="fc" id="L336">            return;</span>
+        }
+
+<span class="fc" id="L339">        System.out.println(&quot;Your Scrolls:&quot;);</span>
+<span class="fc bfc" id="L340" title="All 2 branches covered.">        for (int i = 0; i &lt; userScrolls.size(); i++) {</span>
+<span class="fc" id="L341">            System.out.println((i + 1) + &quot;. &quot; + userScrolls.get(i));</span>
+        }
+
+<span class="fc" id="L344">        System.out.print(&quot;Select a scroll to modify (Enter the number): &quot;);</span>
+<span class="fc" id="L345">        int choice = scanner.nextInt();</span>
+<span class="fc" id="L346">        scanner.nextLine();</span>
+
+<span class="pc bpc" id="L348" title="2 of 4 branches missed.">        if (choice &lt;= 0 || choice &gt; userScrolls.size()) {</span>
+<span class="nc" id="L349">            System.out.println(&quot;Invalid choice.&quot;);</span>
+<span class="nc" id="L350">            return;</span>
+        }
+
+<span class="fc" id="L353">        String scrollName = userScrolls.get(choice - 1);</span>
+<span class="fc" id="L354">        System.out.println(&quot;Editing: &quot; + scrollName);</span>
+
+<span class="fc" id="L356">        String currentContent = readBinaryFile(&quot;digital_scrolls/&quot; + scrollName + &quot;.txt&quot;);</span>
+<span class="fc" id="L357">        System.out.print(&quot;Enter new content (only 0s and 1s allowed): &quot;);</span>
+<span class="fc" id="L358">        String newContent = scanner.nextLine();</span>
+
+<span class="pc bpc" id="L360" title="1 of 2 branches missed.">        if (!newContent.matches(&quot;[01]+&quot;)) {</span>
+<span class="fc" id="L361">            System.out.println(&quot;Invalid content. Only 0s and 1s are allowed.&quot;);</span>
+<span class="fc" id="L362">            return;</span>
+        }
+
+<span class="nc" id="L365">        String updatedContent = currentContent + VERSION_SEPARATOR + newContent;</span>
+
+        try {
+<span class="nc" id="L368">            Files.write(Paths.get(&quot;digital_scrolls/&quot; + scrollName + &quot;.txt&quot;), updatedContent.getBytes());</span>
+<span class="nc" id="L369">            System.out.println(&quot;Scroll content modified successfully.&quot;);</span>
+<span class="nc" id="L370">        } catch (IOException e) {</span>
+<span class="nc" id="L371">            System.out.println(&quot;Error updating the scroll content.&quot;);</span>
+<span class="nc" id="L372">        }</span>
+<span class="nc" id="L373">    }</span>
+
+    public List&lt;String&gt; getScrollsByAuthor(String author) {
+<span class="fc" id="L376">        List&lt;String&gt; scrolls = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L377">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+<span class="pc bpc" id="L378" title="1 of 2 branches missed.">        if (!Files.exists(filePath)) {</span>
+<span class="nc" id="L379">            return scrolls;</span>
+        }
+
+<span class="fc" id="L382">        try (BufferedReader reader = Files.newBufferedReader(filePath)) {</span>
+            String line;
+<span class="fc bfc" id="L384" title="All 2 branches covered.">            while ((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L385">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="pc bpc" id="L386" title="1 of 4 branches missed.">                if (parts.length &gt; 3 &amp;&amp; parts[3].equals(author)) {</span>
+<span class="fc" id="L387">                    scrolls.add(parts[0] + &quot;_&quot; + parts[1]);</span>
+                }
+<span class="fc" id="L389">            }</span>
+<span class="nc" id="L390">        } catch (IOException e) {</span>
+<span class="nc" id="L391">            System.out.println(&quot;Error reading the scrolls_info.txt file.&quot;);</span>
+<span class="fc" id="L392">        }</span>
+
+<span class="fc" id="L394">        return scrolls;</span>
+    }
+
+    public void deleteScroll(Scanner scanner, String username) {
+<span class="fc" id="L398">        List&lt;String&gt; userScrolls = getScrollsByAuthor(username);</span>
+
+<span class="pc bpc" id="L400" title="1 of 2 branches missed.">        if (userScrolls.isEmpty()) {</span>
+<span class="nc" id="L401">            System.out.println(&quot;You don't have any scrolls.&quot;);</span>
+<span class="nc" id="L402">            return;</span>
+        }
+
+<span class="fc" id="L405">        System.out.println(&quot;Your Scrolls:&quot;);</span>
+<span class="fc bfc" id="L406" title="All 2 branches covered.">        for (int i = 0; i &lt; userScrolls.size(); i++) {</span>
+<span class="fc" id="L407">            System.out.println((i + 1) + &quot;. &quot; + userScrolls.get(i));</span>
+        }
+
+<span class="fc" id="L410">        System.out.print(&quot;Select a scroll to delete (Enter the number): &quot;);</span>
+<span class="fc" id="L411">        int choice = scanner.nextInt();</span>
+<span class="fc" id="L412">        scanner.nextLine();</span>
+
+<span class="pc bpc" id="L414" title="2 of 4 branches missed.">        if (choice &lt;= 0 || choice &gt; userScrolls.size()) {</span>
+<span class="nc" id="L415">            System.out.println(&quot;Invalid choice.&quot;);</span>
+<span class="nc" id="L416">            return;</span>
+        }
+
+<span class="fc" id="L419">        String scrollNameToDelete = userScrolls.get(choice - 1);</span>
+
+<span class="fc" id="L421">        String path = &quot;digital_scrolls/&quot; + scrollNameToDelete + &quot;.txt&quot;;</span>
+        try {
+<span class="nc" id="L423">            Files.delete(Paths.get(path));</span>
+<span class="nc" id="L424">            System.out.println(&quot;Scroll deleted successfully.&quot;);</span>
+
+<span class="nc" id="L426">            removeScrollInfo(scrollNameToDelete);</span>
+<span class="fc" id="L427">        } catch (IOException e) {</span>
+<span class="fc" id="L428">            System.out.println(&quot;Error deleting the scroll.&quot;);</span>
+<span class="nc" id="L429">        }</span>
+
+<span class="fc" id="L431">        logTaskCompletion(username, &quot;deleted a scroll&quot;);</span>
+<span class="fc" id="L432">    }</span>
+
+    public void removeScrollInfo(String scrollNameToDelete) {
+<span class="fc" id="L435">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+
+        try {
+<span class="fc" id="L438">            List&lt;String&gt; lines = Files.readAllLines(filePath);</span>
+<span class="fc" id="L439">            List&lt;String&gt; updatedLines = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L441" title="All 2 branches covered.">            for (String line : lines) {</span>
+<span class="pc bpc" id="L442" title="1 of 2 branches missed.">                if (!line.contains(scrollNameToDelete)) {</span>
+<span class="fc" id="L443">                    updatedLines.add(line);</span>
+                }
+<span class="fc" id="L445">            }</span>
+
+<span class="fc" id="L447">            Files.write(filePath, updatedLines, StandardCharsets.UTF_8);</span>
+<span class="nc" id="L448">        } catch (IOException e) {</span>
+<span class="nc" id="L449">            System.out.println(&quot;Error updating the scrolls.txt file.&quot;);</span>
+<span class="fc" id="L450">        }</span>
+<span class="fc" id="L451">    }</span>
+
+    public void viewScrollsForGuest(Scanner scanner) {
+<span class="fc" id="L454">        String directoryPath = &quot;digital_scrolls&quot;;</span>
+<span class="fc" id="L455">        Path path = Paths.get(directoryPath);</span>
+<span class="fc" id="L456">        List&lt;String&gt; scrollFiles = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L458">        try (DirectoryStream&lt;Path&gt; stream = Files.newDirectoryStream(path, &quot;*.txt&quot;)) {</span>
+<span class="fc" id="L459">            System.out.println(&quot;\nList of Scrolls (Guest View):&quot;);</span>
+<span class="fc" id="L460">            int index = 1;</span>
+<span class="fc bfc" id="L461" title="All 2 branches covered.">            for (Path file : stream) {</span>
+<span class="fc" id="L462">                String scrollName = file.getFileName().toString();</span>
+<span class="fc" id="L463">                scrollFiles.add(scrollName);</span>
+<span class="fc" id="L464">                System.out.println(index++ + &quot;. &quot; + scrollName);</span>
+<span class="fc" id="L465">            }</span>
+<span class="nc" id="L466">        } catch (IOException e) {</span>
+<span class="nc" id="L467">            System.out.println(&quot;Error reading from the directory: &quot; + directoryPath);</span>
+<span class="nc" id="L468">            return;</span>
+<span class="fc" id="L469">        }</span>
+
+<span class="fc" id="L471">        System.out.print(&quot;\nSelect a scroll to view (Enter the number, or 0 to return): &quot;);</span>
+<span class="fc" id="L472">        int choice = scanner.nextInt();</span>
+<span class="fc" id="L473">        scanner.nextLine();</span>
+
+<span class="pc bpc" id="L475" title="2 of 4 branches missed.">        if (choice &gt; 0 &amp;&amp; choice &lt;= scrollFiles.size()) {</span>
+<span class="fc" id="L476">            String selectedScroll = scrollFiles.get(choice - 1);</span>
+<span class="fc" id="L477">            showVersionsAndContent(scanner, &quot;digital_scrolls/&quot; + selectedScroll);</span>
+<span class="pc bnc" id="L478" title="All 2 branches missed.">        } else if (choice == 0) {</span>
+<span class="nc" id="L479">            return;</span>
+        } else {
+<span class="nc" id="L481">            System.out.println(&quot;Invalid choice.&quot;);</span>
+        }
+<span class="fc" id="L483">    }</span>
+    public void incrementViewCount(String scrollId) {
+<span class="fc" id="L485">        updateCount(scrollId, 4);</span>
+<span class="fc" id="L486">    }</span>
+
+    public void incrementDownloadCount(String scrollId) {
+<span class="fc" id="L489">        updateCount(scrollId, 5);</span>
+<span class="fc" id="L490">    }</span>
+
+    public void updateCount(String scrollId, int index) {
+<span class="fc" id="L493">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+
+        try {
+<span class="fc" id="L496">            List&lt;String&gt; lines = Files.readAllLines(filePath);</span>
+<span class="fc" id="L497">            List&lt;String&gt; updatedLines = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L499" title="All 2 branches covered.">            for (String line : lines) {</span>
+<span class="fc bfc" id="L500" title="All 2 branches covered.">                if (line.startsWith(scrollId + &quot;,&quot;)) {</span>
+<span class="fc" id="L501">                    String[] parts = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L502">                    int currentCount = Integer.parseInt(parts[index]);</span>
+<span class="fc" id="L503">                    parts[index] = String.valueOf(currentCount + 1);</span>
+<span class="fc" id="L504">                    updatedLines.add(String.join(&quot;,&quot;, parts));</span>
+<span class="fc" id="L505">                } else {</span>
+<span class="fc" id="L506">                    updatedLines.add(line);</span>
+                }
+<span class="fc" id="L508">            }</span>
+
+<span class="fc" id="L510">            Files.write(filePath, updatedLines, StandardCharsets.UTF_8);</span>
+<span class="nc" id="L511">        } catch (IOException e) {</span>
+<span class="nc" id="L512">            System.out.println(&quot;Error updating the scrolls.txt file.&quot;);</span>
+<span class="fc" id="L513">        }</span>
+<span class="fc" id="L514">    }</span>
+
+    private String extractScrollIdFromPath(String filePath) {
+<span class="fc" id="L517">        Path path = Paths.get(filePath);</span>
+<span class="fc" id="L518">        String fileName = path.getFileName().toString();</span>
+<span class="fc" id="L519">        return fileName.split(&quot;_&quot;)[0];</span>
+    }
+    public void displayScrollStats(String fileName) {
+<span class="fc" id="L522">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+
+        try {
+<span class="fc" id="L525">            List&lt;String&gt; lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);</span>
+
+<span class="fc bfc" id="L527" title="All 2 branches covered.">            for (String line : lines) {</span>
+<span class="fc" id="L528">                String[] parts = line.split(&quot;,&quot;);</span>
+
+<span class="fc" id="L530">                String storedFileName = Paths.get(parts[2]).getFileName().toString();</span>
+
+<span class="fc bfc" id="L532" title="All 2 branches covered.">                if (storedFileName.equals(fileName)) {</span>
+<span class="fc" id="L533">                    int viewCount = Integer.parseInt(parts[4]);</span>
+<span class="fc" id="L534">                    int downloadCount = Integer.parseInt(parts[5]);</span>
+
+<span class="fc" id="L536">                    System.out.println(&quot;View Count: &quot; + viewCount);</span>
+<span class="fc" id="L537">                    System.out.println(&quot;Download Count: &quot; + downloadCount);</span>
+<span class="fc" id="L538">                    return;</span>
+                }
+<span class="fc" id="L540">            }</span>
+
+<span class="fc" id="L542">            System.out.println(&quot;No scroll found with the given file name.&quot;);</span>
+
+<span class="nc" id="L544">        } catch (IOException e) {</span>
+<span class="nc" id="L545">            System.out.println(&quot;Error reading the scrolls_info.txt file.&quot;);</span>
+<span class="fc" id="L546">        }</span>
+<span class="fc" id="L547">    }</span>
+    public void searchScrolls(Scanner scanner) {
+<span class="fc" id="L549">        System.out.print(&quot;Enter a keyword to search for in scroll names: &quot;);</span>
+<span class="fc" id="L550">        String keyword = scanner.nextLine().toLowerCase();</span>
+
+<span class="fc" id="L552">        List&lt;String&gt; matchingScrolls = findScrollsByName(keyword);</span>
+
+<span class="pc bpc" id="L554" title="1 of 2 branches missed.">        if (matchingScrolls.isEmpty()) {</span>
+<span class="fc" id="L555">            System.out.println(&quot;No scrolls found with the given keyword.&quot;);</span>
+        } else {
+<span class="nc" id="L557">            System.out.println(&quot;Matching scrolls:&quot;);</span>
+<span class="nc bnc" id="L558" title="All 2 branches missed.">            for (String scrollLine : matchingScrolls) {</span>
+<span class="nc" id="L559">                String[] parts = scrollLine.split(&quot;,&quot;);</span>
+<span class="nc" id="L560">                String scrollId = parts[0];</span>
+<span class="nc" id="L561">                String scrollName = parts[1];</span>
+<span class="nc" id="L562">                String author = parts[3];</span>
+<span class="nc" id="L563">                String viewCount = parts[4];</span>
+<span class="nc" id="L564">                String downloadCount = parts[5];</span>
+
+<span class="nc" id="L566">                System.out.println(&quot;ID: &quot; + scrollId + &quot;, Name: &quot; + scrollName + &quot;, Author: &quot; + author + &quot;, Views: &quot; + viewCount + &quot;, Downloads: &quot; + downloadCount);</span>
+<span class="nc" id="L567">            }</span>
+        }
+<span class="fc" id="L569">        viewScrollContentById(scanner);</span>
+<span class="fc" id="L570">    }</span>
+
+    private List&lt;String&gt; findScrollsByName(String keyword) {
+<span class="fc" id="L573">        List&lt;String&gt; matchingScrolls = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L574">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+
+        try {
+<span class="fc" id="L577">            List&lt;String&gt; lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);</span>
+
+<span class="fc bfc" id="L579" title="All 2 branches covered.">            for (String line : lines) {</span>
+<span class="fc" id="L580">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L581">                String scrollName = parts[1];</span>
+
+<span class="pc bpc" id="L583" title="1 of 2 branches missed.">                if (scrollName.toLowerCase().contains(keyword)) {</span>
+<span class="nc" id="L584">                    matchingScrolls.add(line);</span>
+                }
+<span class="fc" id="L586">            }</span>
+<span class="nc" id="L587">        } catch (IOException e) {</span>
+<span class="nc" id="L588">            System.out.println(&quot;Error reading the scrolls_info.txt file.&quot;);</span>
+<span class="fc" id="L589">        }</span>
+
+<span class="fc" id="L591">        return matchingScrolls;</span>
+    }
+    public void viewScrollContentById(Scanner scanner) {
+<span class="fc" id="L594">        System.out.print(&quot;Enter the Scroll ID you wish to view: &quot;);</span>
+<span class="fc" id="L595">        String idInput = scanner.nextLine();</span>
+
+<span class="fc" id="L597">        String scrollDetails = findScrollById(idInput);</span>
+
+<span class="fc bfc" id="L599" title="All 2 branches covered.">        if (scrollDetails != null) {</span>
+<span class="fc" id="L600">            String[] parts = scrollDetails.split(&quot;,&quot;);</span>
+<span class="fc" id="L601">            String filePath = parts[2];</span>
+
+<span class="fc" id="L603">            String scrollContent = readBinaryFile(filePath);</span>
+
+<span class="pc bpc" id="L605" title="1 of 2 branches missed.">            if (scrollContent != null) {</span>
+<span class="fc" id="L606">                String[] versions = scrollContent.split(VERSION_SEPARATOR);</span>
+
+<span class="fc" id="L608">                System.out.println(&quot;Available versions:&quot;);</span>
+<span class="fc bfc" id="L609" title="All 2 branches covered.">                for (int i = 0; i &lt; versions.length; i++) {</span>
+<span class="fc" id="L610">                    System.out.println((i + 1) + &quot;. Version &quot; + (i + 1));</span>
+                }
+
+<span class="fc" id="L613">                System.out.print(&quot;Select a version to view its content (Enter the number): &quot;);</span>
+<span class="fc" id="L614">                int choice = scanner.nextInt();</span>
+<span class="fc" id="L615">                scanner.nextLine();</span>
+
+<span class="pc bpc" id="L617" title="3 of 4 branches missed.">                if (choice &gt;= 1 &amp;&amp; choice &lt;= versions.length) {</span>
+<span class="nc" id="L618">                    System.out.println(&quot;\nContent of Version &quot; + choice + &quot;:\n&quot; + versions[choice - 1]);</span>
+<span class="nc" id="L619">                    incrementViewCount(idInput);</span>
+                } else {
+<span class="fc" id="L621">                    System.out.println(&quot;Invalid choice.&quot;);</span>
+                }
+<span class="fc" id="L623">            } else {</span>
+<span class="nc" id="L624">                System.out.println(&quot;Error reading the scroll content.&quot;);</span>
+            }
+<span class="fc" id="L626">        } else {</span>
+<span class="fc" id="L627">            System.out.println(&quot;No scroll found with the given ID.&quot;);</span>
+        }
+<span class="fc" id="L629">    }</span>
+
+
+    private String findScrollById(String id) {
+<span class="fc" id="L633">        Path filePath = Paths.get(&quot;scrolls_info.txt&quot;);</span>
+        try {
+<span class="fc" id="L635">            List&lt;String&gt; lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);</span>
+<span class="fc bfc" id="L636" title="All 2 branches covered.">            for (String line : lines) {</span>
+<span class="fc" id="L637">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L638">                String scrollId = parts[0];</span>
+<span class="fc bfc" id="L639" title="All 2 branches covered.">                if (scrollId.equals(id)) {</span>
+<span class="fc" id="L640">                    return line;</span>
+                }
+<span class="fc" id="L642">            }</span>
+<span class="nc" id="L643">        } catch (IOException e) {</span>
+<span class="nc" id="L644">            System.out.println(&quot;Error reading the scrolls_info.txt file.&quot;);</span>
+<span class="fc" id="L645">        }</span>
+<span class="fc" id="L646">        return null;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,0 +1,178 @@
+Oct 20, 2023 7:13:16 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 26, 2023 5:20:14 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 12:38:16 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll.
+Oct 27, 2023 12:42:02 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll.
+Oct 27, 2023 12:47:14 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 12:48:21 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 12:54:30 AM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls and found matching scrolls.
+Oct 27, 2023 12:57:26 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 12:57:33 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 12:57:55 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 12:58:03 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 1:00:17 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 1:00:48 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 1:02:22 AM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 1:06:46 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 1:06:59 AM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+10月 27, 2023 9:12:37 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: added a new scroll
+10月 27, 2023 9:12:37 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:12:37 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: uploaded a new scroll
+10月 27, 2023 9:12:37 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: Admin downloaded a scroll
+10月 27, 2023 9:12:37 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+10月 27, 2023 9:12:37 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:12:37 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+10月 27, 2023 9:13:41 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: added a new scroll
+10月 27, 2023 9:13:41 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:13:41 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: uploaded a new scroll
+10月 27, 2023 9:13:41 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: Admin downloaded a scroll
+10月 27, 2023 9:13:41 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+10月 27, 2023 9:13:41 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:13:41 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+10月 27, 2023 9:14:56 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: added a new scroll
+10月 27, 2023 9:14:56 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:14:56 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: uploaded a new scroll
+10月 27, 2023 9:14:56 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: Admin downloaded a scroll
+10月 27, 2023 9:14:56 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+10月 27, 2023 9:14:56 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:14:56 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+10月 27, 2023 9:16:34 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: added a new scroll
+10月 27, 2023 9:16:34 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:16:34 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: uploaded a new scroll
+10月 27, 2023 9:16:34 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: Admin downloaded a scroll
+10月 27, 2023 9:16:34 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+10月 27, 2023 9:16:34 下午 admin.AdminScrollSystem searchScrolls
+信息: Admin searched for scrolls but couldn't find any matching scrolls.
+10月 27, 2023 9:16:34 下午 admin.AdminScrollSystem logTaskCompletion
+信息: Admin completed the task: admin returned to menu
+Oct 27, 2023 9:43:10 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 9:43:10 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 9:43:10 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: uploaded a new scroll
+Oct 27, 2023 9:43:10 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 9:43:10 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 9:43:10 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 9:43:10 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 9:55:49 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 9:55:49 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 9:55:49 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 9:55:49 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 9:55:49 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 9:55:49 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:05:53 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 10:05:53 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:05:53 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 10:05:53 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:05:53 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:05:53 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:08:54 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 10:08:54 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:08:54 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 10:08:54 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:08:54 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:08:54 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:10:08 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 10:10:08 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:10:08 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 10:10:08 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:10:08 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:10:08 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:11:43 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 10:11:43 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:11:43 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: uploaded a new scroll
+Oct 27, 2023 10:11:43 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 10:11:43 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:11:43 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:11:43 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:19:41 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: added a new scroll
+Oct 27, 2023 10:19:41 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:19:41 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: uploaded a new scroll
+Oct 27, 2023 10:19:41 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: Admin downloaded a scroll
+Oct 27, 2023 10:19:41 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu
+Oct 27, 2023 10:19:41 PM admin.AdminScrollSystem searchScrolls
+INFO: Admin searched for scrolls but couldn't find any matching scrolls.
+Oct 27, 2023 10:19:41 PM admin.AdminScrollSystem logTaskCompletion
+INFO: Admin completed the task: admin returned to menu

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="admin.AdminManagerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-10-27T11:19:41" hostname="Palaks-MacBook-Pro.local" time="0.038">
+  <properties/>
+  <testcase name="testAddUser()" classname="admin.AdminManagerTest" time="0.027"/>
+  <testcase name="testListAllUsers()" classname="admin.AdminManagerTest" time="0.002"/>
+  <testcase name="testStartAndExit()" classname="admin.AdminManagerTest" time="0.002"/>
+  <testcase name="testDeleteUserByUsername()" classname="admin.AdminManagerTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

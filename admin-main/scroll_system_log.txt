@@ -1,0 +1,207 @@
+Oct 20, 2023 6:59:25 AM admin.ScrollSystem logTaskCompletion
+INFO: group2 completed the task: created a new scroll
+10月 26, 2023 2:58:13 上午 admin.ScrollSystem logTaskCompletion
+信息: yiyi completed the task: created a new scroll
+10月 26, 2023 3:28:06 上午 admin.ScrollSystem logTaskCompletion
+信息: yiyi completed the task: uploaded a new scroll
+Oct 26, 2023 12:34:40 PM admin.ScrollSystem logTaskCompletion
+INFO: group2 completed the task: returned to the user menu
+Oct 27, 2023 1:30:47 AM admin.ScrollSystem logTaskCompletion
+INFO: group2 completed the task: returned to the user menu
+Oct 27, 2023 1:45:33 AM admin.ScrollSystem logTaskCompletion
+INFO: group2 completed the task: downloaded a scroll: 1_water.txt
+
+10月 27, 2023 4:30:03 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 4:30:03 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 4:30:03 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 4:30:03 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 4:43:34 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 4:43:34 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 4:43:34 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 4:43:34 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:17:42 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:17:42 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:17:42 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:17:42 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:20:46 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:20:46 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:20:46 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:20:46 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:21:46 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:21:46 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:21:47 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:21:47 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:22:33 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:22:33 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:22:33 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:22:33 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:22:33 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:23:04 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:23:04 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:23:04 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:23:04 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 5:23:04 上午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+Oct 27, 2023 6:08:43 AM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 6:08:43 AM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 6:08:43 AM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 6:08:43 AM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 6:08:44 AM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+10月 27, 2023 9:12:37 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: created a new scroll
+10月 27, 2023 9:12:37 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: uploaded a new scroll
+10月 27, 2023 9:12:37 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:12:37 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:12:37 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: deleted a scroll
+10月 27, 2023 9:12:38 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:13:41 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: created a new scroll
+10月 27, 2023 9:13:41 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: uploaded a new scroll
+10月 27, 2023 9:13:41 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:13:41 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:13:41 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: deleted a scroll
+10月 27, 2023 9:13:41 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:14:56 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: created a new scroll
+10月 27, 2023 9:14:56 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: uploaded a new scroll
+10月 27, 2023 9:14:56 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:14:56 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:14:56 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: deleted a scroll
+10月 27, 2023 9:14:56 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:16:34 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: created a new scroll
+10月 27, 2023 9:16:34 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: uploaded a new scroll
+10月 27, 2023 9:16:34 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:16:34 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+10月 27, 2023 9:16:34 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: deleted a scroll
+10月 27, 2023 9:16:34 下午 admin.ScrollSystem logTaskCompletion
+信息: testUser completed the task: returned to the user menu
+Oct 27, 2023 9:43:10 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: created a new scroll
+Oct 27, 2023 9:43:10 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: uploaded a new scroll
+Oct 27, 2023 9:43:10 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 9:43:10 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 9:43:10 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: deleted a scroll
+Oct 27, 2023 9:43:10 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 9:55:49 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: created a new scroll
+Oct 27, 2023 9:55:49 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 9:55:49 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 9:55:49 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: deleted a scroll
+Oct 27, 2023 9:55:49 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:05:53 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: created a new scroll
+Oct 27, 2023 10:05:53 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:05:53 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:05:53 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: deleted a scroll
+Oct 27, 2023 10:05:53 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:08:54 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: created a new scroll
+Oct 27, 2023 10:08:55 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:08:55 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:08:55 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: deleted a scroll
+Oct 27, 2023 10:08:55 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:10:08 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: created a new scroll
+Oct 27, 2023 10:10:08 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:10:08 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:10:08 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: deleted a scroll
+Oct 27, 2023 10:10:08 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:11:43 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: created a new scroll
+Oct 27, 2023 10:11:43 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: uploaded a new scroll
+Oct 27, 2023 10:11:43 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:11:43 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:11:43 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: deleted a scroll
+Oct 27, 2023 10:11:43 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:19:41 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: created a new scroll
+Oct 27, 2023 10:19:41 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: uploaded a new scroll
+Oct 27, 2023 10:19:41 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:19:41 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
+Oct 27, 2023 10:19:41 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: deleted a scroll
+Oct 27, 2023 10:19:41 PM admin.ScrollSystem logTaskCompletion
+INFO: testUser completed the task: returned to the user menu
