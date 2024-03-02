@@ -4,23 +4,23 @@
 
 ## Installation 🛠️
 _ _ _ 
-> The team has made this readme to walk you through the entirety of gaining this code and either extending it or using it as it is. 
+> This readme has been made to walk you through the entirety of gaining this code and either extending it or using it as it is. 
 
 > **IMPORTANT**
 
 1. Prelimary step: **Ensure you have java 17.0.8 or above and Gradle 8.2.1**
 2. First step: **Clone the repository**
-    - After your proceed to find our code on the main repository, copy the repository URL (either HTTPS or SSH) by clicking the icon
+    - After your proceed to find the code on the main repository, copy the repository URL (either HTTPS or SSH) by clicking the icon
 3. Second step: **Creating your directory**
-    - On your local machine, using terminal navigate into your chosen directory ( this is where you store our code, ideally a folder) 
+    - On your local machine, using terminal navigate into your chosen directory ( this is where you store the code, ideally a folder) 
 4. Third step: **Cloning the repository**
-    - Once you have changed your path to destired place of storage, type in the following command, **git clone [directory path]**
+    - Once you have changed your path to desired place of storage, type in the following command, **git clone [directory path]**
 5. Fourth step: **Authenticate**
     - You will be asked to fill in your details, then github will download the entire repository on your chosen repository
 _ _ _
 
 ## Continuous Integration and Development 🖥️
-> For ongoing automation and continuous monitoring throughout the development, you can use the following tools like we have.
+> For ongoing automation and continuous monitoring throughout the development, you can use the following tools like I have.
 
 - Jacoco - Helps measure code coverage by tests implemented and helps give a visual upon the test readability and code quality‌.
 
@@ -32,7 +32,7 @@ _ _ _
 _ _ _
 
 ## Features 💡
-> There are a multitude of features implemented throughout this program, we recommend testing them out and exploring it yourself. Here is a quick brief explanation of major specifications followed and client specific requirements that the team addressed. 
+> There are a multitude of features implemented throughout this program, I recommend testing them out and exploring it yourself. Here is a quick brief explanation of major specifications followed and client specific requirements that I addressed. 
 
 _ _ _
 
@@ -83,46 +83,9 @@ _ _ _
 * Push – Penultimate step, push the code onto your branch using git push. 
 
 + Create a pull request – A pull request is to merge your repository to the original one, Once your ready fill out the information required to create a pull request ( found on your repository), and once done we will review the content. If the content is improving our functionality, we will approve the pull request and fix any merge conflicts that happen. 
-
-**Happy coding!**
 _ _ _
 
-## Authors 📚
-> The following are the list of authors that contributed to the construction of this project, helped maintainining and regulating the workflow of the porject. 
-_ _ _ 
-1. **Kartik Nair**
-  - Sprint 1 delegation: **Product Owner**
-    - Description: The product owner is responsible for defining the work and prioritizing the requested features specified by client and creating user stories in a project, one of the main tasks also include instructing the devs what exactly to work.
-  - Sprint 2 delegation: **Product Owner**
-    - Description: The product owner is responsible for defining the work and prioritizing the requested features specified by client and creating user stories in a project, one of the main tasks also include instructing the devs what exactly to work.
-  - Sprint 3 delegation: **Scrum Master**
-    - Description: The scrum master is the facilitator of the project and alligns the development team to follow the Scrum framework and principles, promoting effective communication, collaboration, and continuous improvement accross the project.
-_ _ _ 
-2. **Palak Arora**
-  - Sprint 1 delegation: **Scrum Master**
-    - Description: The scrum master is the facilitator of the project and alligns the development team to follow the Scrum framework and principles, promoting effective communication, collaboration, and continuous improvement accross the project.
-  - Sprint 2 delegation: **Scrum Master**
-    - Description: The scrum master is the facilitator of the project and alligns the development team to follow the Scrum framework and principles, promoting effective communication, collaboration, and continuous improvement accross the project.
-  - Sprint 3 delegation: **Product Owner**
-    - Description: The product owner is responsible for defining the work and prioritizing the requested features specified by client and creating user stories in a project, one of the main tasks also include instructing the devs what exactly to work.
-_ _ _ 
-3. **Ethan Yang**
-  - Sprint 1 delegation: **Software Developer**
-    - Description: A software developer is responsible for writing, testing, and maintaining code to create the application, creating code which implements features adhering to the clients requests 
-  - Sprint 2 delegation: **Software Developer**
-    - Description: A software developer is responsible for writing, testing, and maintaining code to create the application, creating code which implements features adhering to the clients requests 
-  - Sprint 3 delegation: **Software Developer**
-    - Description: A software developer is responsible for writing, testing, and maintaining code to create the application, creating code which implements features adhering to the clients requests 
-- - - 
-4. **Li Yinjun Li**
-  - Sprint 1 delegation: **Software Developer**
-    - Description: A software developer is responsible for writing, testing, and maintaining code to create the application, creating code which implements features adhering to the clients requests 
-  - Sprint 2 delegation: **Software Developer**
-    - Description: A software developer is responsible for writing, testing, and maintaining code to create the application, creating code which implements features adhering to the clients requests 
-  - Sprint 3 delegation: **Software Developer**
-    - Description: A software developer is responsible for writing, testing, and maintaining code to create the application, creating code which implements features adhering to the clients requests 
-- - - 
-## 🌟 Special thanks to our tutor for assistance throughout this project 🌟
+## 🌟 Happy Coding! 🌟
 _ _ _
 
 ![Goodbye pic](https://live-production.wcms.abc-cdn.net.au/1fb87517529a75879401babfa7fac4ef?impolicy=wcms_crop_resize&cropH=556&cropW=837&xPos=0&yPos=0&width=862&height=575)
