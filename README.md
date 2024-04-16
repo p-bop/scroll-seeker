@@ -1,6 +1,6 @@
-# __📜 WELCOME TO OUR VIRTUAL SCROLL ACCESS SYSTEM 📜__
+# __📜 WELCOME TO THE VIRTUAL SCROLL ACCESS SYSTEM 📜__
 
-> Hey there reader, the above repository holds the code for a virtual scroll access system. It allows for a variety of cool functionalities a scroll management domain can adopt. To walk you through our work continue reading down belown
+> Hey there reader, the above repository holds the code for a virtual scroll access system. It allows for a variety of cool functionalities a scroll management domain can adopt. To walk you through my work, continue reading down belown
 
 ## Installation 🛠️
 _ _ _ 
